@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card-header {
+            border-bottom: 2px solid #007bff;
+        }
+
+        .card-body {
+            background-color: #f9f9f9;
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+
+        .input-group-text {
+            background-color: #f0f0f0;
+            border: 1px solid #ced4da;
+        }
+
+        .card {
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h3><i class="bi bi-credit-card"></i> Payment Form</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="/payment" method="post">
+                            <div class="mb-4">
+                                <label for="product" class="form-label">Product Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-box"></i></span>
+                                    <input type="text" name="product" id="product" class="form-control"
+                                        placeholder="Enter product name" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="amount" class="form-label">Amount</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-cash-stack"></i></span>
+                                    <input type="number" name="amount" id="amount" class="form-control"
+                                        placeholder="Enter amount" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="quantity" class="form-label">Quantity</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-cart-plus"></i></span>
+                                    <input type="number" name="quantity" id="quantity" class="form-control"
+                                        placeholder="Enter quantity" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="currency" class="form-label">Currency</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="currency-icon"><i
+                                            class="bi bi-currency-dollar"></i></span>
+                                    <input type="text" name="currency" id="currency" class="form-control"
+                                        placeholder="Enter currency (e.g., USD)" required>
+                                </div>
+                            </div>
+                            <div class="d-grid d-flex justify-content-center">
+                                <button type="submit" class="btn btn-custom py-2 px-4" name="pay"><i class="bi bi-credit-card-fill"></i> Pay Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script>
+        const currencyIcons = {
+            "USD": "bi bi-currency-dollar",
+            "EUR": "bi bi-currency-euro",
+            "INR": "bi bi-currency-rupee",
+            "GBP": "bi bi-currency-pound",
+            "JPY": "bi bi-currency-yen",
+        };
+        document.getElementById("currency").addEventListener("input", function () {
+            const currencyInput = this.value.toUpperCase();
+            const iconElement = document.getElementById("currency-icon");
+
+            if (currencyIcons[currencyInput]) {
+                iconElement.innerHTML = `<i class="${currencyIcons[currencyInput]}"></i>`;
+            } else {
+                iconElement.innerHTML = `<i class="bi bi-currency-dollar"></i>`; // Default icon
+            }
+        });
+    </script>
+</body>
+
+</html>
